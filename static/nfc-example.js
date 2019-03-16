@@ -1,4 +1,5 @@
-function readWriteNfc() {
+// Read from an NFC tag and print to console.
+function readNfc() {
   if ('nfc' in navigator) {
     navigator.nfc.watch(function(message) {
         consoleLog("NFC message received from URL " + message.url);
@@ -7,7 +8,7 @@ function readWriteNfc() {
             url: message.url,
             data: [{
               recordType: "text",
-              data: 'Hello World'
+              data: 'Empty tag'
             }]
           }]);
         }
@@ -17,6 +18,25 @@ function readWriteNfc() {
       })
       .then(() => consoleLog("Added a watch."))
       .catch(err => consoleLog("Adding watch failed: " + err.name));
+  } else {
+    consoleLog('NFC API not supported.');
+  }
+}
+
+// Write a dummy fake-id to the NFC tag.
+function writeNfc() {
+  if ('nfc' in navigator) {
+    navigator.nfc.watch((message) => {
+        navigator.nfc.push({
+          url: "/userid",
+          data: [{
+            recordType: "text",
+            data: 'fake-id'
+          }]
+        });
+      }, { mode: 'any'}).then(() => 
+        console.log("Added a watch."))
+        .catch(err => console.log("Adding a watch failed: " + err.name));
   } else {
     consoleLog('NFC API not supported.');
   }

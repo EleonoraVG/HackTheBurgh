@@ -1,0 +1,58 @@
+<title>Register new user</title>
+        	 	<link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
+        	 	<link rel="stylesheet" href="static/bootstrap-theme.min.css">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
+<h2>Register new user</h2>
+<form action="" method="post" role="form">
+    {{ form.csrf }}
+<div class="form-group">
+
+      <label for="name">Name:</label>
+<input type="text" class="form-control" id="name" name="name" placeholder="Name">
+
+      <label for="surname">Surname:</label>
+<input type="text" class="form-control" id="surname" name="surname" placeholder="Surname">
+
+      <label for="dob">Date of Birth:</label>
+<input type="date" class="form-control" id="dob" name="dob" placeholder="Date of birth">
+
+      <label for="nationality">Nationality:</label>
+<input type="text" class="form-control" id="nationality" name="nationality" placeholder="Nationality">
+
+      <label for="blood_type">Blood type:</label>
+<input type="text" class="form-control" id="blood-type" name="blood_type" placeholder="Blood type">
+
+      <label for="languages">Languages:</label>
+<input type="text" class="form-control" id="languages" name="languages" placeholder="languages (separated by commas)">
+
+      <label for="medications">Medications:</label>
+<input type="text" class="form-control" id="medications" name="medications" placeholder="medications (separated by commas)">
+
+      <label for="allergies">Allergies:</label>
+<input type="text" class="form-control" id="allergies" name="allergies" placeholder="allergies (separated by commas)">
+
+      <label for="diseases">Diseases:</label>
+<input type="text" class="form-control" id="diseases" name="diseases" placeholder="diseases (separated by commas)">
+
+      <label for="vaccines">Vaccines:</label>
+<input type="text" class="form-control" id="vaccines" name="vaccines" placeholder="vaccines (separated by commas)">
+
+</div>
+
+<button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+ 
+{% for message in messages %}
+
+{% if "Error" in message[1]: %}
+<div class="alert alert-warning">
+                {{ message[1] }}</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+ 
+</div>

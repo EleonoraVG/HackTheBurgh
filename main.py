@@ -1,8 +1,9 @@
 # [START gae_python37_app]
-from flask import Flask, render_template
-from pymongo import MongoClient
 from bson.objectid import ObjectId
+from flask import Flask
+from flask import render_template
 from flask import request
+from pymongo import MongoClient
 
 app = Flask(__name__, template_folder='templates')
 
@@ -14,10 +15,22 @@ db = client.hacktheburgh
 def homepage():
     return render_template("index.html")
 
+# TODO(andrea): Debug only. Remove in prod
 @app.route("/u/<user_id>")
 def userpage(user_id):
         user = db.users.find_one({"_id": ObjectId(user_id)})
         return render_template("user.html", user=user)
+
+@app.route('/', methods=['POST'])
+def user_request():
+    data = request.form
+    if data and data.get('uid'):
+        uid = data.get('uid')
+        print(uid)
+        user = db.users.find_one({"_id": ObjectId(uid)})
+        if user:
+            return render_template("user.html", user=user)
+    return render_template("index.html", error=True)
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App

@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
+<script type=text/javascript src="{{
+      url_for('static', filename='nfc-example.js') }}"></script>
+
 <body>
   <h1>Hello World!</h1>
-<p>Hello world</p>
+  <p>Hello world</p>
+
+  <p>
+    <button class="btn btn-lg btn-default" onclick="readWriteNfc()">Test NFC Read/Write</button>
+  </p>
+
+  <pre id="log"></pre>
+
+  <p><small>Based on the code snippets from <a href="https://w3c.github.io/web-nfc/#examples">specification draft</a>.</small></p>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_pymongo import PyMongo
+from flask import url_for
 
 # Flask configurations
 app = Flask(__name__, template_folder='templates')

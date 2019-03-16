@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
+  <title>Health Tag</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -14,49 +14,101 @@
   <link href="static/MDB/css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="static/MDB/css/style.css" rel="stylesheet">
+   <style type="text/css">
+    html,
+    body,
+    header,
+    .view {
+      height: 100%;
+    }
+
+    @media (max-width: 740px) {
+      html,
+      body,
+      header,
+      .view {
+        height: 1000px;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+      html,
+      body,
+      header,
+      .view {
+        height: 650px;
+      }
+    }
+    @media (min-width: 800px) and (max-width: 850px) {
+              .navbar:not(.top-nav-collapse) {
+                  background: #1C2331!important;
+              }
+          }
+  </style>
   <script type="text/javascript" src="{{url_for('static', filename='nfc-example.js') }}">
   </script>
   
-  <link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
-        	 	<link rel="stylesheet" href="static/bootstrap-theme.min.css">
   <script type=text/javascript src="{{
       url_for('static', filename='nfc-example.js') }}"></script>
 </head>
 
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark primary-color">
-    <span class="navbar-brand"><strong>HealthTag</strong></span>
-</nav>
-</header>
-
 <body>
-  {# Display dialog  #}
-  {% if messages %}
-  {% for message in messages %}
-  {% if "Error" not in message[1]: %}
-  <div class="alert alert-info">
-                  {{ message[1] }}</div>
-  {% endif %}
-  {% if "Error" in message[1]: %}
-  <div class="alert alert-warning">
-                  {{ message[1] }}</div>
-  {% endif %}
-  {% endfor %}
-  {% endif %}
+    <!-- Full Page Intro -->
+  <div class="view full-page-intro" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg'); background-repeat: no-repeat; background-size: cover;">
 
-  <div class="container">
-  <h1>Welcome!</h1>
-  <p>Scan your <strong>Health Tag</strong> to start.</p>
+    <!-- Mask & flexbox options-->
+    <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
-  <p>
-    <button class="btn btn-lg btn-default" onclick="readNfc()">Test NFC Read</button>
-    <button class="btn btn-lg btn-default" onclick="writeNfc()">Test NFC Write</button>
+      <!-- Content -->
+      <div class="container">
 
-  </p>
+        <!--Grid row-->
+        <div class="row wow fadeIn">
 
-  <pre id="log"></pre>
+          <!--Grid column-->
+          <div class="col-md-6 mb-4 white-text text-center text-md-left">
+
+            <h1 class="display-4 font-weight-bold">Welcome to HealthTag</h1>
+
+            <hr class="hr-light">
+
+            <p>
+              <strong>The most innovative way to carry your medical information.</strong>
+            </p>
+
+            <p class="mb-4 d-none d-md-block">
+              <strong>Place your HealthTag near the device to start scanning...</strong>
+            </p>
+
+            <button class="btn btn-lg btn-default" onclick="readNfc()">Test NFC Read</button>
+            <button class="btn btn-lg btn-default" onclick="writeNfc()">Test NFC Write</button>
+
+          <pre id="log"></pre>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+
+        {# Display dialog  #}
+        {% if messages %}
+        {% for message in messages %}
+        {% if "Error" not in message[1]: %}
+        <div class="alert alert-info">{{ message[1] }}</div>
+        {% endif %}
+        {% if "Error" in message[1]: %}
+        <div class="alert alert-warning">{{ message[1] }}</div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+      <!-- Content -->
+
+    </div>
+    <!-- Mask & flexbox options-->
 
   </div>
+  <!-- Full Page Intro -->
+
 </body>
 
 </html>

@@ -1,67 +1,268 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{{url_for('static', filename='MDB/css/bootstrap.min.css') }}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{{url_for('static', filename='MDB/css/mdb.min.css') }}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{{url_for('static', filename='MDB/css/style.css') }}" rel="stylesheet">
+  <script type="text/javascript" src="{{url_for('static', filename='nfc-example.js') }}">
+  </script>
+</head>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+    <a class="navbar-brand" href="#"><strong> {{ user.name }} {{ user.surname }}</strong></a>
+  </button>
+</nav>
+</header>
 
 <body>
-  <h1>Hello {{ user.name }}!</h1>
-  
-  <h3>Name</h3>
-  <span>{{ user.name }} {{ user.surname }}</span>
+  <section class="text-center">
+  </p>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 mb-lg-0 mb-5">
+      <div class="avatar mx-auto">
+        <!-- <img src="{{user.avatar}}" class="rounded-circle z-depth-1"
+        alt="Sample avatar"> -->
+        <img src="https://eitrawmaterials.eu/wp-content/uploads/2016/09/empty-avatar.jpg" class="rounded-circle z-depth-1"
+        alt="Sample Avatar">
+      </div>
+      <h5 class="font-weight-bold mt-4 mb-3">{{ user.name }} {{ user.surname }}</h5>
+    </div>
+  </div>
 
-  <h3>Date of Birth</h3>
-  <span>{{ user.dob }}</span>
+  <div class="row">
+    <div class="col-11 mb-lg-0 mb-5 mx-auto">
 
-  <h3>Blood type</h3>
-  <span>{{ user.blood_type }}</span>
-  
-  {# TODO(andrea):insurance object #}
-  {# TODO(andrea):emergency object #}
+      <!--Accordion wrapper-->
+      <div class="accordion md-accordion z-depth-1-half" id="accordionEx1" role="tablist"
+      aria-multiselectable="true">
 
-  <h3> I speak </h3>
-  <ul>
-  {% for lang in user.languages %}
-  <li>{{ lang }}</li>
-  {% endfor %}
-  </ul>
+      <!-- Accordion card -->
+      <div class="card">
 
-  <h3> Allergies </h3>
-  {% if not user.allergies %}
-  <span>None</span>
-  {% endif %}
-  <ul>
-  {% for allergy in user.allergies %}
-  <li>{{ allergy }}</li>
-  {% endfor %}
-  </ul>
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="heading1">
+          <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="true"
+          aria-controls="collapse1">
+          <h4 class="mb-0 mt-3 red-text">
+            Basic information <i class="fas fa-angle-down rotate-icon"></i>
+          </h4>
+        </a>
+      </div>
 
-  <h3> Medications </h3>
-  {% if not user.medications %}
-  <span>None</span>
-  {% endif %}
-  <ul>
-  {% for medication in user.medications %}
-  <li>{{ medication }}</li>
-  {% endfor %}
-  </ul>
+      <!-- Card body -->
+      <div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1" data-parent="#accordionEx1">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-1">
+              <i class="far fa-calendar-alt fa-2x red-text"></i>
+            </div>
+            <div class="col-6">
+              <h5 class="font-weight-bold ml-1">Date of birth:</h5>
+            </div>
+            <div class="col-5">
+              <p class="grey-text">{{ user.dob }}</p>
+            </div>
+          </div>
 
-  <h3> Diseases </h3>
-  {% if not user.diseases %}
-  <span>None</span>
-  {% endif %}
-  <ul>
-  {% for disease in user.diseases %}
-  <li>{{ disease }}</li>
-  {% endfor %}
-  </ul>
+          <hr>
 
-  <h3> Vaccinations </h3>
-  {% if not user.vaccines %}
-  <span>None</span>
-  {% endif %}
-  <ul>
-  {% for vax in user.vaccines %}
-  <li>{{ vax }}</li>
-  {% endfor %}
-  </ul>
+          <div class="row">
+            <div class="col-1">
+              <i class="fas fa-tint fa-2x red-text"></i>
+            </div>
+            <div class="col-6">
+              <h5 class="font-weight-bold ml-1">Blood type:</h5>
+            </div>
+            <div class="col-5">
+              <p class="grey-text">{{ user.blood_type }}</p>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row align-items-center">
+            <div class="col-1">
+              <i class="fas fa-language fa-2x red-text"></i>
+            </div>
+            <div class="col-6">
+              <h5 class="font-weight-bold ml-1">Languages I speak:</h5>
+            </div>
+            <div class="col-5">
+              {% for lang in user.languages %}
+              <p class="grey-text">{{ lang }}</p>
+              {% endfor %}
+              <p class="grey-text">chinese</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Accordion card -->
+    <div class="card">
+
+      <!-- Card header -->
+      <div class="card-header" role="tab" id="heading1">
+        <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="true"
+        aria-controls="collapse1">
+        <h4 class="mb-0 mt-3 cyan-text">
+          Allergies <i class="fas fa-angle-down rotate-icon"></i>
+        </h4>
+      </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1" data-parent="#accordionEx1">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-1">
+            <i class="fas fa-allergies fa-2x cyan-text"></i>
+          </div>
+          <div class="col-6">
+            <h5 class="font-weight-bold ml-1">Alergies:</h5>
+          </div>
+          <div class="col-5">
+            {% if not user.allergies %}
+            <p class="grey-text">None</p>
+            {% endif %}
+            {% for allergy in user.allergies %}
+            <p class="grey-text">{{ allergy }}</p>
+            {% endfor %}
+            <p class="grey-text">pollen</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion card -->
+  <div class="card">
+
+    <!-- Card header -->
+    <div class="card-header" role="tab" id="heading1">
+      <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="true"
+      aria-controls="collapse1">
+      <h4 class="mb-0 mt-3 blue-text">
+        Medications <i class="fas fa-angle-down rotate-icon"></i>
+      </h4>
+    </a>
+  </div>
+
+  <!-- Card body -->
+  <div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1" data-parent="#accordionEx1">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-1">
+          <i class="fas fa-capsules fa-2x blue-text"></i>
+        </div>
+        <div class="col-6">
+          <h5 class="font-weight-bold ml-1">Medications:</h5>
+        </div>
+        <div class="col-5">
+          {% if not user.medications %}
+          <p class="grey-text">None</p>
+          {% endif %}
+          {% for medication in user.medications %}
+          <p class="grey-text">{{ medication }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Accordion card -->
+<div class="card">
+
+  <!-- Card header -->
+  <div class="card-header" role="tab" id="heading1">
+    <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="true"
+    aria-controls="collapse1">
+    <h4 class="mb-0 mt-3 orange-text">
+      Diseases <i class="fas fa-angle-down rotate-icon"></i>
+    </h4>
+  </a>
+</div>
+
+<!-- Card body -->
+<div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1" data-parent="#accordionEx1">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-1">
+        <i class="fas fa-diagnoses fa-2x orange-text"></i>
+      </div>
+      <div class="col-6">
+        <h5 class="font-weight-bold ml-1">Diseases:</h5>
+      </div>
+      <div class="col-5">
+        {% if not user.diseases %}
+        <p class="grey-text">None</p>
+        {% endif %}
+        {% for disease in user.diseases %}
+        <p class="grey-text">{{ disease }}</p>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- Accordion card -->
+<div class="card">
+
+  <!-- Card header -->
+  <div class="card-header" role="tab" id="heading1">
+    <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="true"
+    aria-controls="collapse1">
+    <h4 class="mb-0 mt-3 purple-text">
+      Vaccinations <i class="fas fa-angle-down rotate-icon"></i>
+    </h4>
+  </a>
+</div>
+
+<!-- Card body -->
+<div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1" data-parent="#accordionEx1">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-1">
+        <i class="fas fa-syringe fa-2x purple-text"></i>
+      </div>
+      <div class="col-6">
+        <h5 class="font-weight-bold ml-1">Vaccinations:</h5>
+      </div>
+      <div class="col-5">
+        {% if not user.vaccines %}
+        <p class="grey-text">None</p>
+        {% endif %}
+        {% for vax in user.vaccines %}
+        <p class="grey-text">{{ vax }}</p>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+  </div>
+</div>
+</div>
+</section>
+
+{# TODO(andrea):insurance object #}
+{# TODO(andrea):emergency object #}
 
 </body>
 

@@ -22,5 +22,5 @@ def userpage(user_id):
     return render_template("user.html", user=user)
 
 if __name__ == "main":
-    app.run()
+    app.run(host='127.0.0.1', port=8080, debug=True)
     app.debug = True

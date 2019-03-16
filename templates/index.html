@@ -13,7 +13,9 @@
 
   <pre id="log"></pre>
 
-  <p><small>Based on the code snippets from <a href="https://w3c.github.io/web-nfc/#examples">specification draft</a>.</small></p>
+  {% if error %}
+  <span id=error>User not found, try rescannign</span>
+  {% endif %}
 </body>
 
 </html>

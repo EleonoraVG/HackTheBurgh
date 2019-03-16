@@ -1,14 +1,13 @@
+# [START gae_python37_app]
 from bson.objectid import ObjectId
 from flask import flash
 from flask import Flask
 from flask import render_template
 from flask import request
-from flask import url_for
 from pymongo import MongoClient
 from wtforms import Form, TextField, TextAreaField, validators, StringField, DateField, SubmitField
 from forms import MedicalForm
 
-# Flask configurations
 app = Flask(__name__, template_folder='templates')
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
@@ -19,7 +18,6 @@ client = MongoClient("mongodb+srv://hacktheburgh-g46bf.gcp.mongodb.net",
                      password="C8ZRFk4DxIC0iCAe")
 db = client.hacktheburgh
 
-# Load landing page
 @app.route('/')
 def homepage():
     return render_template("index.html")
@@ -27,8 +25,8 @@ def homepage():
 # TODO(andrea): Debug only. Remove in prod
 @app.route("/u/<user_id>")
 def userpage(user_id):
-    user = db.users.find_one({"_id": ObjectId(user_id)})
-    return render_template("user.html", user=user)
+        user = db.users.find_one({"_id": ObjectId(user_id)})
+        return render_template("user.html", user=user)
 
 @app.route('/', methods=['POST'])
 def user_request():
@@ -56,6 +54,10 @@ def new_user_form():
                 return render_template("index.html", message="Success")
     return render_template('form.html', form=form)
 
-if __name__ == "main":
-    app.run()
-    app.debug = True
+if __name__ == '__main__':
+    # This is used when running locally only. When deploying to Google App
+    # Engine, a webserver process such as Gunicorn will serve the app. This
+    # can be configured by adding an `entrypoint` to app.yaml.
+    app.run(host='127.0.0.1', port=8080, debug=True)
+
+# [END gae_python37_app]

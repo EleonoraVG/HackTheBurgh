@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
+        	 	<link rel="stylesheet" href="static/bootstrap-theme.min.css">
 <script type=text/javascript src="{{
       url_for('static', filename='nfc-example.js') }}"></script>
 
 <body>
+  {# Display dialog  #}
+  {% if messages %}
+  {% for message in messages %}
+  {% if "Error" not in message[1]: %}
+  <div class="alert alert-info">
+                  {{ message[1] }}</div>
+  {% endif %}
+  {% if "Error" in message[1]: %}
+  <div class="alert alert-warning">
+                  {{ message[1] }}</div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  <div class="container">
   <h1>Hello World!</h1>
   <p>Hello world</p>
 
@@ -13,9 +30,7 @@
 
   <pre id="log"></pre>
 
-  {% if error %}
-  <span id=error>User not found, try rescannign</span>
-  {% endif %}
+  </div>
 </body>
 
 </html>

@@ -37,8 +37,7 @@ function writeNfc() {
 }
 
 function consoleLog(data) {
-  var logElement = document.getElementById('log');
-  logElement.innerHTML += '\n' + data;
+  console.log(data);
 }
 
 function processMessage(message) {

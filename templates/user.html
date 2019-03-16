@@ -3,9 +3,66 @@
 
 <body>
   <h1>Hello {{ user.name }}!</h1>
-  <p>Name: {{ user.name }}</p>
-  <p>DOB: {{ user.dob }}</p>
-  <p>Blood type: {{ user.blood_type }}</p>
+  
+  <h3>Name</h3>
+  <span>{{ user.name }} {{ user.surname }}</span>
+
+  <h3>Date of Birth</h3>
+  <span>{{ user.dob }}</span>
+
+  <h3>Blood type</h3>
+  <span>{{ user.blood_type }}</span>
+  
+  {# TODO(andrea):insurance object #}
+  {# TODO(andrea):emergency object #}
+
+  <h3> I speak </h3>
+  <ul>
+  {% for lang in user.languages %}
+  <li>{{ lang }}</li>
+  {% endfor %}
+  </ul>
+
+  <h3> Allergies </h3>
+  {% if not user.allergies %}
+  <span>None</span>
+  {% endif %}
+  <ul>
+  {% for allergy in user.allergies %}
+  <li>{{ allergy }}</li>
+  {% endfor %}
+  </ul>
+
+  <h3> Medications </h3>
+  {% if not user.medications %}
+  <span>None</span>
+  {% endif %}
+  <ul>
+  {% for medication in user.medications %}
+  <li>{{ medication }}</li>
+  {% endfor %}
+  </ul>
+
+  <h3> Diseases </h3>
+  {% if not user.diseases %}
+  <span>None</span>
+  {% endif %}
+  <ul>
+  {% for disease in user.diseases %}
+  <li>{{ disease }}</li>
+  {% endfor %}
+  </ul>
+
+  <h3> Vaccinations </h3>
+  {% if not user.vaccines %}
+  <span>None</span>
+  {% endif %}
+  <ul>
+  {% for vax in user.vaccines %}
+  <li>{{ vax }}</li>
+  {% endfor %}
+  </ul>
+
 </body>
 
 </html>

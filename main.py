@@ -20,7 +20,9 @@ def homepage():
 #TODO(andrea): change so that user_id does not appear in URL, ie use RESTful api
 @app.route("/u/<user_id>")
 def userpage(user_id):
+    print(user_id)
     user = db.users.find_one({"_id": ObjectId(user_id)})
+    print(user)
     return render_template("user.html", user=user)
 
 if __name__ == "main":

@@ -19,7 +19,7 @@ client = MongoClient("mongodb://hacktheburgh-shard-00-00-g46bf.gcp.mongodb.net:2
 
 db = client.hacktheburgh
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/index')
 def homepage():
     data = request.form
@@ -30,7 +30,8 @@ def homepage():
         print(uid)
         user = db.users.find_one({"_id": ObjectId(uid)})
         if user:
-            return render_template("user.html", user=user)
+            return user
+            #            return render_template("user.html", user=user)
     elif data:
         return render_template("index.html", message="Error: User not found")
     return render_template("index.html")

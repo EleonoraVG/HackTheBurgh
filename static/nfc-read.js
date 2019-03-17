@@ -7,7 +7,7 @@ function readNfc() {
           console.log("Tag is empty.");
         } else {
           const http_req = new XMLHttpRequest();
-          const url = "/";
+          const url = "/new";
           var data = {
             uid: message.records[0].data
           }
@@ -37,7 +37,7 @@ function consoleLog(data) {
 
 function testPost() {
   const http_req = new XMLHttpRequest();
-  const url = "/new";
+  const url = "/";
   var data = {
     uid: "testPost123" 
   }
@@ -47,6 +47,7 @@ function testPost() {
     if (http_req.readyState == 4 && http_req.status == 200) {
       // do something with response
       console.log(http_req.responseText);
+      //      window.location.href("user.html", user = user)
     }
   };
   http_req.send(data);

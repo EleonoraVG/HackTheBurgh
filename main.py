@@ -34,6 +34,8 @@ def userpage(user_id):
 def user_request():
     print("post method is called")
     data = request.form
+    print("the data:")
+    print(data)
     if data and data.get('uid'):
         uid = data.get('uid')
         print(uid)

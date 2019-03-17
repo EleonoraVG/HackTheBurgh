@@ -56,7 +56,7 @@
             <div class="col-1">
               <i class="far fa-calendar-alt fa-2x red-text"></i>
             </div>
-            <div class="col-6">
+            <div class="col-5">
               <h6 class="font-weight-bold ml-1">Date of birth:</h6>
             </div>
             <div class="col-5">
@@ -70,7 +70,7 @@
             <div class="col-1">
               <i class="fas fa-tint fa-2x red-text"></i>
             </div>
-            <div class="col-6">
+            <div class="col-5">
               <h6 class="font-weight-bold ml-1">Blood type:</h6>
             </div>
             <div class="col-5">
@@ -84,7 +84,7 @@
             <div class="col-1">
               <i class="fas fa-globe fa-2x red-text"></i>
             </div>
-            <div class="col-6">
+            <div class="col-5">
               <h6 class="font-weight-bold ml-1">Nationality:</h6>
             </div>
             <div class="col-5">
@@ -247,6 +247,71 @@
         {% for vax in user.vaccines %}
         <p class="grey-text">{{ vax }}</p>
         {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- Accordion card -->
+<div class="card">
+
+  <!-- Card header -->
+  <div class="card-header" role="tab" id="heading7">
+    <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse7" aria-expanded="true"
+    data-target="#collapse7">
+    <h5 class="mb-0 mt-3 deep-orange-text">
+      <i class="fas fa-phone-volume"></i>
+      Emergency contact <i class="fas fa-angle-down rotate-icon"></i>
+    </h5>
+  </a>
+</div>
+
+<!-- Card body -->
+<div id="collapse7" class="collapse show" role="tabpanel" aria-labelledby="heading7" data-parent="#accordionEx1">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-1">
+        <i class="fas fa-user fa-2x red-text"></i>
+      </div>
+      <div class="col-5">
+        <h6 class="font-weight-bold ml-1">Name:</h6>
+      </div>
+      <div class="col-5">
+        <p class="grey-text">{{ user.emergencyname }} {{ user.emergencysurname }}</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-1">
+        <i class="fas fa-user fa-2x red-text"></i>
+      </div>
+      <div class="col-5">
+        <h6 class="font-weight-bold ml-1">Phone:</h6>
+      </div>
+      <div class="col-5">
+        <p class="grey-text">{{ user.emergencyphone }}</p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row align-items-center">
+      <div class="col-1">
+        <i class="fas fa-user fa-2x red-text"></i>
+      </div>
+      <div class="col-5">
+        <h6 class="font-weight-bold ml-1">Languages:</h6>
+      </div>
+      <div class="col-5">
+        {% for lang in user.emergencylanguages %}
+        <p class="grey-text">{{ lang }}</p>
+        {% endfor %}
+        <p class="grey-text">German</p>
+        <p class="grey-text">Chinese</p>
       </div>
     </div>
 

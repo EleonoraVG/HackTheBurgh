@@ -5,8 +5,22 @@ function readNfc() {
         consoleLog("NFC message received from URL " + message.url);
         if (message.records[0].recordType == 'empty') {
           console.log("Tag is empty.");
+        } else {
+          const http_req = new XMLHttpRequest();
+          const url = "/new";
+          var data = {
+            uid: message.records[0].data
+          }
+          http_req.open("POST", url, true);
+          http_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          http_req.onreadystatechange = function() {
+            if (http_req.readyState == 4 && http_req.status == 200) {
+              // do something with response
+              console.log(http_req.responseText);
+            }
+          };
+          http_req.send(data);
         }
-        processMessage(message);
       }, {
         mode: 'any'
       })
@@ -19,4 +33,22 @@ function readNfc() {
 
 function consoleLog(data) {
   console.log(data);
+}
+
+function testPost() {
+  const http_req = new XMLHttpRequest();
+  const url = "/";
+  var data = {
+    uid: "testPost123" 
+  }
+  http_req.open("POST", url, true);
+  http_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  http_req.onreadystatechange = function() {
+    if (http_req.readyState == 4 && http_req.status == 200) {
+      // do something with response
+      console.log(http_req.responseText);
+      //      window.location.href("user.html", user = user)
+    }
+  };
+  http_req.send(data);
 }

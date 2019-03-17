@@ -1,12 +1,12 @@
 // Write a dummy fake-id to the NFC tag.
-function writeNfc() {
+function writeNfc(id) {
   if ('nfc' in navigator) {
     navigator.nfc.watch((message) => {
         navigator.nfc.push({
           url: "/id",
           records: [{
             recordType: "text",
-            data: 'fake-id-11111'
+            data:id 
           }]
         });
       }, {

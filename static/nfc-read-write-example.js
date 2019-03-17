@@ -4,13 +4,7 @@ function readNfc() {
     navigator.nfc.watch(function(message) {
         consoleLog("NFC message received from URL " + message.url);
         if ( message.data == null || message.data[0].recordType === 'empty') {
-          navigator.nfc.push([{
-            url: "/",
-            data: [{
-              recordType: "text",
-              data: 'Empty tag'
-            }]
-          }]);
+          console.log("Tag is empty.");  
         }
         processMessage(message);
       }, {

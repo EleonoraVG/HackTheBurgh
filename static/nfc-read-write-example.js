@@ -21,7 +21,13 @@ function readNfc() {
 function writeNfc() {
   if ('nfc' in navigator) {
     navigator.nfc.watch((message) => {
-        navigator.nfc.push("fake-id");
+        navigator.nfc.push([{
+          url: "id:,
+          data: [{
+            recordType: "text",
+            data: 'fake-id-11111'
+          }]
+        }]);
       }, { mode: 'any'}).then(() => 
         console.log("Added a watch."))
         .catch(err => console.log("Adding a watch failed: " + err.name));

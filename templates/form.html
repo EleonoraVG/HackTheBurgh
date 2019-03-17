@@ -67,9 +67,15 @@
 <button type="submit" class="btn btn-success">Submit</button>
 {% if uid %}
 <span></span>
-<button class="btn btn-success" onclick="writeNfc('{{uid}}')"> Write to tag</button>
 {% endif %}
 </form>
+<button class="btn btn-lg btn-default" onclick="writeNfc('5c8e4875d2a86ee6f5c3172f')">Write Bill Gates</button>
+ <button class="btn btn-lg btn-default" onclick="writeNfc('5c8e48d1d2a86ee6f5c31730')">Write Donald Trump</button>
+<button class="btn btn-success" onclick="writeNfc('{{uid}}')"> Write to tag</button>
+
+
+
+
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
  

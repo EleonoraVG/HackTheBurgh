@@ -15,23 +15,13 @@ app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
 # Mongo config
-client = MongoClient("mongodb://hacktheburgh-shard-00-00-g46bf.gcp.mongodb.net:27017,hacktheburgh-shard-00-01-g46bf.gcp.mongodb.net:27017,hacktheburgh-shard-00-02-g46bf.gcp.mongodb.net:27017/test?ssl=true&replicaSet=HackTheBurgh-shard-0&authSource=admin&retryWrites=true/removeme", username="Admin", password="C8ZRFk4DxIC0iCAe") 
+client = MongoClient("mongodb://hacktheburgh-shard-00-00-g46bf.gcp.mongodb.net:27017,hacktheburgh-shard-00-01-g46bf.gcp.mongodb.net:27017,hacktheburgh-shard-00-02-g46bf.gcp.mongodb.net:27017/test?ssl=true&replicaSet=HackTheBurgh-shard-0&authSource=admin&retryWrites=true/removeme", username="Admin", password="C8ZRFk4DxIC0iCAe")
 
 db = client.hacktheburgh
 
 @app.route('/')
 @app.route('/index')
 def homepage():
-    return render_template("index.html")
-
-# TODO(andrea): Debug only. Remove in prod
-@app.route("/u/<user_id>")
-def userpage(user_id):
-        user = db.users.find_one({"_id": ObjectId(user_id)})
-        return render_template("user.html", user=user)
-
-@app.route('/', methods=['POST'])
-def user_request():
     data = request.form
     if data and data.get('uid'):
         uid = data.get('uid')
@@ -39,7 +29,15 @@ def user_request():
         user = db.users.find_one({"_id": ObjectId(uid)})
         if user:
             return render_template("user.html", user=user)
-    return render_template("index.html", message="Error: User not found")
+    elif data:
+        return render_template("index.html", message="Error: User not found")
+    return render_template("index.html")
+
+# TODO(andrea): Debug only. Remove in prod
+@app.route("/u/<user_id>")
+def userpage(user_id):
+    user = db.users.find_one({"_id": ObjectId(user_id)})
+    return render_template("user.html", user=user)
 
 # Load form to fill
 @app.route('/new', methods=['GET', 'POST'])

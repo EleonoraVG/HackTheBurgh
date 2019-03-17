@@ -19,6 +19,6 @@ function writeNfc(id) {
   }
 }
 
-function consoleLog(data) {
-  console.log(data);
-}
+//function consoleLog(data) {
+  //console.log(data);
+//}

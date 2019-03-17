@@ -29,6 +29,7 @@ def userpage(user_id):
 
 @app.route('/', methods=['POST'])
 def user_request():
+    print("post method is called")
     data = request.form
     if data and data.get('uid'):
         uid = data.get('uid')

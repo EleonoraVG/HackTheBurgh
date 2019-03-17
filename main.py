@@ -32,8 +32,7 @@ def homepage():
         if user:
            print("user found")
            return render_template("user.html", user=user)
-        print("user not found")
-    elif data:
+    if data:
         print("user not found")
         return render_template("index.html", message="Error: User not found")
     return render_template("index.html")

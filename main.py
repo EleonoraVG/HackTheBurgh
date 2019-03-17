@@ -51,10 +51,11 @@ def new_user_form():
         if not form.validate():
             flash('Error: Complete required fields.')
         else:
-            data = request.form.to_dict(flat=False)
+            data = request.form.to_dict(flat=True)
             outcome = db.users.insert_one(data)
             if outcome.acknowledged:
                 uid = str(outcome.inserted_id)
+                print(uid)
                 flash('Success: User added to Database. You can now write the NFC Tag.')
                 return render_template('form.html', form=form, uid=uid)
     return render_template('form.html', form=form, uid=False)

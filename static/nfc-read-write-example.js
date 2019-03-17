@@ -3,14 +3,8 @@ function readNfc() {
   if ('nfc' in navigator) {
     navigator.nfc.watch(function(message) {
         consoleLog("NFC message received from URL " + message.url);
-        if (message.data[0].recordType === 'empty') {
-          navigator.nfc.push([{
-            url: message.url,
-            data: [{
-              recordType: "text",
-              data: 'Empty tag'
-            }]
-          }]);
+        if ( message.data == null || message.data[0].recordType === 'empty') {
+          console.log("Tag is empty.");  
         }
         processMessage(message);
       }, {
@@ -27,13 +21,7 @@ function readNfc() {
 function writeNfc() {
   if ('nfc' in navigator) {
     navigator.nfc.watch((message) => {
-        navigator.nfc.push({
-          url: "/userid",
-          data: [{
-            recordType: "text",
-            data: 'fake-id'
-          }]
-        });
+        navigator.nfc.push("fake-id");
       }, { mode: 'any'}).then(() => 
         console.log("Added a watch."))
         .catch(err => console.log("Adding a watch failed: " + err.name));

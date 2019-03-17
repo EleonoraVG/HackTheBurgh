@@ -1,7 +1,20 @@
-<title>Register new user - Health Tag</title>
+<!DOCTYPE html>
+<html>
+  <head>
+  <script type=text/javascript src="{{
+          url_for('static', filename='nfc-read.js') }}"></script>
+  <script type=text/javascript src="{{
+          url_for('static', filename='nfc-write.js') }}"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
         	 	<link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
-        	 	<link rel="stylesheet" href="static/bootstrap-theme.min.css">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register new user - Health Tag</title>
+</head>
+
+<body>
 <div class="container">
 <h2>Register new user</h2>
 <form action="" method="post" role="form">
@@ -41,6 +54,10 @@
 </div>
 
 <button type="submit" class="btn btn-success">Submit</button>
+{% if uid %}
+<span></span>
+<button class="btn btn-success" onclick="writeNFC({{ uid }})">Write to tag</button>
+{% endif %}
 </form>
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
@@ -48,11 +65,14 @@
 {% for message in messages %}
 
 {% if "Error" in message[1]: %}
-<div class="alert alert-warning">
-                {{ message[1] }}</div>
+<div class="alert alert-warning">{{ message[1] }}</div>
+{% elif "Success" in message[1]: %}
+<div class="alert alert-info">{{ message[1] }}</div>
 {% endif %}
 {% endfor %}
 {% endif %}
 {% endwith %}
- 
+
 </div>
+</body>
+</html>

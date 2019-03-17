@@ -1,4 +1,6 @@
 # [START gae_python37_app]
+import requests
+
 from bson.objectid import ObjectId
 from flask import flash
 from flask import Flask
@@ -18,6 +20,7 @@ client = MongoClient("mongodb://hacktheburgh-shard-00-00-g46bf.gcp.mongodb.net:2
 db = client.hacktheburgh
 
 @app.route('/')
+@app.route('/index')
 def homepage():
     return render_template("index.html")
 
@@ -50,8 +53,10 @@ def new_user_form():
             data = request.form.to_dict(flat=False)
             outcome = db.users.insert_one(data)
             if outcome.acknowledged:
-                return render_template("index.html", message="Success")
-    return render_template('form.html', form=form)
+                uid = str(outcome.inserted_id)
+                flash('Success: User added to Database. You can now write the NFC Tag.')
+                return render_template('form.html', form=form, uid=uid)
+    return render_template('form.html', form=form, uid=False)
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App

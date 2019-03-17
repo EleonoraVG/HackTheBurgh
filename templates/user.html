@@ -13,6 +13,7 @@
   <link href="{{url_for('static', filename='MDB/css/mdb.min.css') }}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="{{url_for('static', filename='MDB/css/style.css') }}" rel="stylesheet">
+  <script type="text/javascript" src="{{url_for('static', filename='MDB/js/site.min.js') }}"></script>
   <script type="text/javascript" src="{{url_for('static', filename='nfc-example.js') }}">
   </script>
 </head>
@@ -40,11 +41,11 @@
 
         <!-- Card header -->
         <div class="card-header" role="tab" id="heading1">
-          <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="true"
-          aria-controls="collapse1">
-          <h4 class="mb-0 mt-3 red-text">
+          <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="false"
+          data-target="#collapse1">
+          <h5 class="mb-0 mt-3 red-text">
             Basic information <i class="fas fa-angle-down rotate-icon"></i>
-          </h4>
+          </h5>
         </a>
       </div>
 
@@ -56,7 +57,7 @@
               <i class="far fa-calendar-alt fa-2x red-text"></i>
             </div>
             <div class="col-6">
-              <h5 class="font-weight-bold ml-1">Date of birth:</h5>
+              <h6 class="font-weight-bold ml-1">Date of birth:</h6>
             </div>
             <div class="col-5">
               <p class="grey-text">{{ user.dob }}</p>
@@ -70,7 +71,7 @@
               <i class="fas fa-tint fa-2x red-text"></i>
             </div>
             <div class="col-6">
-              <h5 class="font-weight-bold ml-1">Blood type:</h5>
+              <h6 class="font-weight-bold ml-1">Blood type:</h6>
             </div>
             <div class="col-5">
               <p class="grey-text">{{ user.blood_type }}</p>
@@ -81,45 +82,70 @@
 
           <div class="row align-items-center">
             <div class="col-1">
-              <i class="fas fa-language fa-2x red-text"></i>
+              <i class="fas fa-globe fa-2x red-text"></i>
             </div>
             <div class="col-6">
-              <h5 class="font-weight-bold ml-1">Languages I speak:</h5>
+              <h6 class="font-weight-bold ml-1">Nationality:</h6>
             </div>
             <div class="col-5">
-              {% for lang in user.languages %}
-              <p class="grey-text">{{ lang }}</p>
-              {% endfor %}
+              <p class="grey-text">{{ user.nationality }}</p>
             </div>
           </div>
 
         </div>
       </div>
     </div>
-    <!-- Accordion card -->
+
     <div class="card">
+    <!-- Accordion card -->
 
       <!-- Card header -->
-      <div class="card-header" role="tab" id="heading1">
-        <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="true"
-        aria-controls="collapse1">
-        <h4 class="mb-0 mt-3 cyan-text">
-          Allergies <i class="fas fa-angle-down rotate-icon"></i>
-        </h4>
+      <div class="card-header" role="tab" id="heading2">
+        <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse2" aria-expanded="true"
+        data-target="#collapse2">
+        <h5 class="mb-0 mt-3 pink-text">
+          <i class="fas fa-language  pink-text"></i>
+          Languages <i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
       </a>
     </div>
 
     <!-- Card body -->
-    <div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1" data-parent="#accordionEx1">
+    <div id="collapse2" class="collapse show" role="tabpanel" aria-labelledby="heading2" data-parent="#accordionEx1">
       <div class="card-body">
         <div class="row align-items-center">
-          <div class="col-1">
-            <i class="fas fa-allergies fa-2x cyan-text"></i>
+          <div class="col-12">
+            {% for lang in user.languages %}
+            <p class="grey-text">{{ lang }}</p>
+            {% endfor %}
+            <p class="grey-text">German</p>
+            <p class="grey-text">Chinese</p>
           </div>
-          <div class="col-6">
-            <h5 class="font-weight-bold ml-1">Alergies:</h5>
-          </div>
-          <div class="col-5">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+    <div class="card">
+    <!-- Accordion card -->
+
+      <!-- Card header -->
+      <div class="card-header" role="tab" id="heading3">
+        <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse3" aria-expanded="true"
+        data-target="#collapse3">
+        <h5 class="mb-0 mt-3 cyan-text">
+          <i class="fas fa-allergies  cyan-text"></i>
+          Allergies <i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
+      </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="collapse3" class="collapse show" role="tabpanel" aria-labelledby="heading3" data-parent="#accordionEx1">
+      <div class="card-body">
+        <div class="row align-items-center">
+          <div class="col-12">
             {% if not user.allergies %}
             <p class="grey-text">None</p>
             {% endif %}
@@ -137,26 +163,21 @@
   <div class="card">
 
     <!-- Card header -->
-    <div class="card-header" role="tab" id="heading1">
-      <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="true"
-      aria-controls="collapse1">
-      <h4 class="mb-0 mt-3 blue-text">
+    <div class="card-header" role="tab" id="heading4">
+      <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse4" aria-expanded="true"
+      data-target="#collapse4">
+      <h5 class="mb-0 mt-3 blue-text">
+        <i class="fas fa-capsules  blue-text"></i>
         Medications <i class="fas fa-angle-down rotate-icon"></i>
-      </h4>
+      </h5>
     </a>
   </div>
 
   <!-- Card body -->
-  <div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1" data-parent="#accordionEx1">
+  <div id="collapse4" class="collapse show" role="tabpanel" aria-labelledby="heading4" data-parent="#accordionEx1">
     <div class="card-body">
       <div class="row align-items-center">
-        <div class="col-1">
-          <i class="fas fa-capsules fa-2x blue-text"></i>
-        </div>
-        <div class="col-6">
-          <h5 class="font-weight-bold ml-1">Medications:</h5>
-        </div>
-        <div class="col-5">
+        <div class="col-12">
           {% if not user.medications %}
           <p class="grey-text">None</p>
           {% endif %}
@@ -173,26 +194,21 @@
 <div class="card">
 
   <!-- Card header -->
-  <div class="card-header" role="tab" id="heading1">
-    <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="true"
-    aria-controls="collapse1">
-    <h4 class="mb-0 mt-3 orange-text">
+  <div class="card-header" role="tab" id="heading5">
+    <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse5" aria-expanded="true"
+    data-target="#collapse5">
+    <h5 class="mb-0 mt-3 orange-text">
+      <i class="fas fa-diagnoses  orange-text"></i>
       Diseases <i class="fas fa-angle-down rotate-icon"></i>
-    </h4>
+    </h5>
   </a>
 </div>
 
 <!-- Card body -->
-<div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1" data-parent="#accordionEx1">
+<div id="collapse5" class="collapse show" role="tabpanel" aria-labelledby="heading5" data-parent="#accordionEx1">
   <div class="card-body">
     <div class="row align-items-center">
-      <div class="col-1">
-        <i class="fas fa-diagnoses fa-2x orange-text"></i>
-      </div>
-      <div class="col-6">
-        <h5 class="font-weight-bold ml-1">Diseases:</h5>
-      </div>
-      <div class="col-5">
+      <div class="col-12">
         {% if not user.diseases %}
         <p class="grey-text">None</p>
         {% endif %}
@@ -210,26 +226,21 @@
 <div class="card">
 
   <!-- Card header -->
-  <div class="card-header" role="tab" id="heading1">
-    <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse1" aria-expanded="true"
-    aria-controls="collapse1">
-    <h4 class="mb-0 mt-3 purple-text">
+  <div class="card-header" role="tab" id="heading6">
+    <a data-toggle="collapse" data-parent="#accordionEx1" href="#collapse6" aria-expanded="true"
+    data-target="#collapse6">
+    <h5 class="mb-0 mt-3 purple-text">
+      <i class="fas fa-syringe  purple-text"></i>
       Vaccinations <i class="fas fa-angle-down rotate-icon"></i>
-    </h4>
+    </h5>
   </a>
 </div>
 
 <!-- Card body -->
-<div id="collapse1" class="collapse show" role="tabpanel" aria-labelledby="heading1" data-parent="#accordionEx1">
+<div id="collapse6" class="collapse show" role="tabpanel" aria-labelledby="heading6" data-parent="#accordionEx1">
   <div class="card-body">
     <div class="row align-items-center">
-      <div class="col-1">
-        <i class="fas fa-syringe fa-2x purple-text"></i>
-      </div>
-      <div class="col-6">
-        <h5 class="font-weight-bold ml-1">Vaccinations:</h5>
-      </div>
-      <div class="col-5">
+      <div class="col-12">
         {% if not user.vaccines %}
         <p class="grey-text">None</p>
         {% endif %}

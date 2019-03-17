@@ -13,7 +13,7 @@ function readNfc() {
 					var hiddenField = document.createElement("input");
 					hiddenField.setAttribute("type", "hidden");
 					hiddenField.setAttribute("name", "uid");
-					hiddenField.setAttribute("value", "5c8d398b39c16384ceb37c78");
+					hiddenField.setAttribute("value", message.records[0].data);
 
 					form.appendChild(hiddenField);
 					document.body.appendChild(form);

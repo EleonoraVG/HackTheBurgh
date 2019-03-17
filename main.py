@@ -13,9 +13,8 @@ app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
 # Mongo config
-client = MongoClient("mongodb+srv://hacktheburgh-g46bf.gcp.mongodb.net",
-                     username="Admin",
-                     password="C8ZRFk4DxIC0iCAe")
+client = MongoClient("mongodb://hacktheburgh-shard-00-00-g46bf.gcp.mongodb.net:27017,hacktheburgh-shard-00-01-g46bf.gcp.mongodb.net:27017,hacktheburgh-shard-00-02-g46bf.gcp.mongodb.net:27017/test?ssl=true&replicaSet=HackTheBurgh-shard-0&authSource=admin&retryWrites=true/removeme", username="Admin", password="C8ZRFk4DxIC0iCAe") 
+
 db = client.hacktheburgh
 
 @app.route('/')

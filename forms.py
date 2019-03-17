@@ -1,5 +1,6 @@
 from wtforms import Form, Field, TextField, TextAreaField, validators, StringField, DateField, SubmitField
 from wtforms.widgets import TextInput
+from wtforms.fields.html5 import TelField
 
 # Taglist field to store CSV list of items
 class TagListField(Field):
@@ -29,4 +30,8 @@ class MedicalForm(Form):
     allergies = TagListField('Allergies:')
     diseases = TagListField('Diseases:')
     vaccines = TagListField('Vaccinations:')
+    emergencyName = TextField('Name:')
+    emergencySurname = TextField('Surname')
+    emergencyPhone = TelField('Phone number')
+    emergencyLanguages = TagListField('Languages')
 

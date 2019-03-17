@@ -47,8 +47,7 @@ def new_user_form():
             flash('Error: Complete required fields.')
         else:
             data = request.form.to_dict(flat=False)
-            print(data)
-            outcome = db.user.insert_one(data)
+            outcome = db.users.insert_one(data)
             if outcome.acknowledged:
                 return render_template("index.html", message="Success")
     return render_template('form.html', form=form)

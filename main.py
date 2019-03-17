@@ -30,9 +30,11 @@ def homepage():
         print(uid)
         user = db.users.find_one({"_id": ObjectId(uid)})
         if user:
-            return user
-            #            return render_template("user.html", user=user)
+           print("user found")
+           return render_template("user.html", user=user)
+        print("user not found")
     elif data:
+        print("user not found")
         return render_template("index.html", message="Error: User not found")
     return render_template("index.html")
 

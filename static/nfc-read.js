@@ -37,7 +37,7 @@ function consoleLog(data) {
 
 function testPost() {
   const http_req = new XMLHttpRequest();
-  const url = "/";
+  const url = "/new";
   var data = {
     uid: "testPost123" 
   }

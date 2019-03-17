@@ -16,6 +16,18 @@
   <script type="text/javascript" src="{{url_for('static', filename='MDB/js/site.min.js') }}"></script>
   <script type="text/javascript" src="{{url_for('static', filename='nfc-example.js') }}">
   </script>
+
+  <style>
+    .navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+  </style>
 </head>
 
 <header>
@@ -118,8 +130,6 @@
             {% for lang in user.languages %}
             <p class="grey-text">{{ lang }}</p>
             {% endfor %}
-            <p class="grey-text">German</p>
-            <p class="grey-text">Chinese</p>
           </div>
         </div>
 
@@ -254,6 +264,7 @@
 </div>
 </div>
 
+{% if user.emergencyname %}
 <!-- Accordion card -->
 <div class="card">
 
@@ -310,14 +321,14 @@
         {% for lang in user.emergencylanguages %}
         <p class="grey-text">{{ lang }}</p>
         {% endfor %}
-        <p class="grey-text">German</p>
-        <p class="grey-text">Chinese</p>
       </div>
     </div>
 
   </div>
 </div>
 </div>
+{% endif %}
+
 
   </div>
 </div>
@@ -325,7 +336,6 @@
 </section>
 
 {# TODO(andrea):insurance object #}
-{# TODO(andrea):emergency object #}
 
 </body>
 

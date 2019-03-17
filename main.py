@@ -23,6 +23,8 @@ db = client.hacktheburgh
 @app.route('/index')
 def homepage():
     data = request.form
+    print("the data:")
+    print(data)
     if data and data.get('uid'):
         uid = data.get('uid')
         print(uid)

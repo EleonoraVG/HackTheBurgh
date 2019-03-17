@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{{ user.name }} {{ user.surname }} - Health Tag</title>
+  <title>{{ user.name[0] }} {{ user.surname }} - Health Tag</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -264,7 +264,7 @@
 </div>
 </div>
 
-{% if user.emergencyname %}
+{% if user.emergencyfirstname %}
 <!-- Accordion card -->
 <div class="card">
 
@@ -290,7 +290,7 @@
         <h6 class="font-weight-bold ml-1">Name:</h6>
       </div>
       <div class="col-5">
-        <p class="grey-text">{{ user.emergencyname }} {{ user.emergencysurname }}</p>
+        <p class="grey-text">{{ user.emergencyfirstname }} {{ user.emergencylastname }}</p>
       </div>
     </div>
 

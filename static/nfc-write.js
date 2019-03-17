@@ -9,6 +9,7 @@ function writeNfc(id) {
             data:id 
           }]
         });
+        console.log("id written to tag");
       }, {
         mode: 'any'
       }).then(() =>

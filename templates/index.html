@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+  <script type=text/javascript src="{{
+          url_for('static', filename='nfc-read.js') }}"></script>
+  <script type=text/javascript src="{{
+          url_for('static', filename='nfc-write.js') }}"></script>
 
 <head>
   <meta charset="utf-8">
@@ -45,11 +49,6 @@
               }
           }
   </style>
-  <script type="text/javascript" src="{{url_for('static', filename='nfc-example.js') }}">
-  </script>
-  
-  <script type=text/javascript src="{{
-      url_for('static', filename='nfc-example.js') }}"></script>
 </head>
 
 <body>
@@ -79,7 +78,7 @@
             </p>
 
             <button class="btn btn-lg btn-default" onclick="readNfc()">Test NFC Read</button>
-            <button class="btn btn-lg btn-default" onclick="writeNfc()">Test NFC Write</button>
+            <button class="btn btn-lg btn-default" onclick="writeNfc('fake-id-n01')">Test NFC Write</button>
 
           </div>
           <!--Grid column-->
